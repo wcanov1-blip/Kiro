@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio · Dev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Transición suave para modo oscuro/claro */
+    * { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+    /* Efecto hover suave en tarjetas de proyectos */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* Gradiente animado en el nombre */
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-gray-100 font-sans antialiased min-h-screen">
+
+  <!-- Botón modo oscuro/claro -->
+  <div class="fixed top-4 right-4 z-50">
+    <button
+      id="theme-toggle"
+      aria-label="Cambiar tema"
+      class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 flex items-center justify-center shadow-lg border border-gray-700 dark:border-gray-600 cursor-pointer"
+    >
+      <!-- Ícono sol (modo claro) -->
+      <svg id="icon-sun" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+      </svg>
+      <!-- Ícono luna (modo oscuro) -->
+      <svg id="icon-moon" class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-6 py-20 space-y-24">
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN 1 · PRESENTACIÓN
+    ══════════════════════════════════════ -->
+    <section id="hero" class="text-center space-y-6">
+
+      <!-- Avatar -->
+      <div class="mx-auto w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold text-white shadow-xl ring-4 ring-indigo-500/20">
+        WC
+      </div>
+
+      <!-- Nombre y título -->
+      <div class="space-y-2">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+          <span class="gradient-text">Wendy Cano</span>
+        </h1>
+        <p class="text-lg text-gray-400 font-light tracking-wide">Full-Stack Developer &amp; UI Designer</p>
+      </div>
+
+      <!-- Bio breve -->
+      <p class="max-w-xl mx-auto text-gray-400 leading-relaxed text-base">
+        Construyo interfaces rápidas, accesibles y con buen diseño. Apasionada por convertir ideas complejas en experiencias simples.
+      </p>
+
+      <!-- Redes sociales -->
+      <div class="flex items-center justify-center gap-4 pt-2">
+
+        <!-- GitHub -->
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub"
+           class="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 dark:bg-gray-800 hover:bg-indigo-600 border border-gray-700 text-sm text-gray-300 hover:text-white font-medium transition-all duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+          </svg>
+          GitHub
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn"
+           class="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-blue-600 border border-gray-700 text-sm text-gray-300 hover:text-white font-medium transition-all duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+
+        <!-- X / Twitter -->
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer"
+           aria-label="X (Twitter)"
+           class="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-600 border border-gray-700 text-sm text-gray-300 hover:text-white font-medium transition-all duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          X
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:hola@wendycano.dev"
+           aria-label="Email"
+           class="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-pink-600 border border-gray-700 text-sm text-gray-300 hover:text-white font-medium transition-all duration-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Email
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN 2 · PROYECTOS (GRID 4)
+    ══════════════════════════════════════ -->
+    <section id="projects" class="space-y-8">
+
+      <div class="space-y-1">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-100">Proyectos</h2>
+        <p class="text-gray-500 text-sm">Algunas cosas en las que he trabajado.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+        <!-- Tarjeta 1 -->
+        <article class="project-card group relative bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-indigo-500/50 rounded-2xl p-6 shadow-md hover:shadow-indigo-500/10 hover:shadow-xl cursor-pointer">
+          <!-- Etiqueta de tecnología -->
+          <span class="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">React · TypeScript</span>
+          <h3 class="text-base font-semibold text-gray-100 mb-2 group-hover:text-indigo-300 transition-colors">Dashboard Analytics</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5">Panel de métricas en tiempo real con gráficas interactivas, filtros dinámicos y exportación de datos.</p>
+          <a href="#" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 transition-colors">
+            Ver proyecto
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="project-card group relative bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-purple-500/50 rounded-2xl p-6 shadow-md hover:shadow-purple-500/10 hover:shadow-xl cursor-pointer">
+          <span class="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-4">Next.js · Prisma</span>
+          <h3 class="text-base font-semibold text-gray-100 mb-2 group-hover:text-purple-300 transition-colors">E-Commerce Store</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5">Tienda con carrito de compras, autenticación, pagos con Stripe y gestión de inventario.</p>
+          <a href="#" class="text-xs text-purple-400 hover:text-purple-300 font-medium inline-flex items-center gap-1 transition-colors">
+            Ver proyecto
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="project-card group relative bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 shadow-md hover:shadow-emerald-500/10 hover:shadow-xl cursor-pointer">
+          <span class="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-4">Node.js · MongoDB</span>
+          <h3 class="text-base font-semibold text-gray-100 mb-2 group-hover:text-emerald-300 transition-colors">REST API Builder</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5">Generador de APIs con autenticación JWT, documentación Swagger automática y rate limiting.</p>
+          <a href="#" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center gap-1 transition-colors">
+            Ver proyecto
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Tarjeta 4 -->
+        <article class="project-card group relative bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-pink-500/50 rounded-2xl p-6 shadow-md hover:shadow-pink-500/10 hover:shadow-xl cursor-pointer">
+          <span class="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 mb-4">Svelte · TailwindCSS</span>
+          <h3 class="text-base font-semibold text-gray-100 mb-2 group-hover:text-pink-300 transition-colors">Design System</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5">Librería de componentes accesibles con documentación interactiva, temas y variantes personalizables.</p>
+          <a href="#" class="text-xs text-pink-400 hover:text-pink-300 font-medium inline-flex items-center gap-1 transition-colors">
+            Ver proyecto
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN 3 · HABILIDADES TÉCNICAS
+    ══════════════════════════════════════ -->
+    <section id="skills" class="space-y-8">
+
+      <div class="space-y-1">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-100">Habilidades</h2>
+        <p class="text-gray-500 text-sm">Tecnologías con las que trabajo a diario.</p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- Categoría: Frontend -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-blue-500/10 text-blue-400 border-blue-500/20">HTML5</span>
+            <span class="skill-tag bg-blue-500/10 text-blue-400 border-blue-500/20">CSS3</span>
+            <span class="skill-tag bg-yellow-500/10 text-yellow-400 border-yellow-500/20">JavaScript</span>
+            <span class="skill-tag bg-cyan-500/10 text-cyan-400 border-cyan-500/20">TypeScript</span>
+            <span class="skill-tag bg-sky-500/10 text-sky-400 border-sky-500/20">React</span>
+            <span class="skill-tag bg-gray-500/10 text-gray-300 border-gray-500/20">Next.js</span>
+            <span class="skill-tag bg-orange-500/10 text-orange-400 border-orange-500/20">Svelte</span>
+            <span class="skill-tag bg-teal-500/10 text-teal-400 border-teal-500/20">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- Divisor -->
+        <div class="border-t border-gray-800"></div>
+
+        <!-- Categoría: Backend -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-green-500/10 text-green-400 border-green-500/20">Node.js</span>
+            <span class="skill-tag bg-green-600/10 text-green-500 border-green-600/20">Express</span>
+            <span class="skill-tag bg-indigo-500/10 text-indigo-400 border-indigo-500/20">Python</span>
+            <span class="skill-tag bg-indigo-600/10 text-indigo-300 border-indigo-600/20">FastAPI</span>
+            <span class="skill-tag bg-red-500/10 text-red-400 border-red-500/20">GraphQL</span>
+            <span class="skill-tag bg-purple-500/10 text-purple-400 border-purple-500/20">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Divisor -->
+        <div class="border-t border-gray-800"></div>
+
+        <!-- Categoría: Bases de datos & Cloud -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500">Bases de datos &amp; Cloud</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-blue-700/10 text-blue-300 border-blue-700/20">PostgreSQL</span>
+            <span class="skill-tag bg-green-700/10 text-green-300 border-green-700/20">MongoDB</span>
+            <span class="skill-tag bg-red-600/10 text-red-300 border-red-600/20">Redis</span>
+            <span class="skill-tag bg-orange-600/10 text-orange-300 border-orange-600/20">AWS</span>
+            <span class="skill-tag bg-blue-600/10 text-blue-300 border-blue-600/20">Docker</span>
+            <span class="skill-tag bg-gray-600/10 text-gray-300 border-gray-600/20">Git</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="border-t border-gray-800 pt-10 pb-4 text-center text-sm text-gray-600">
+      <p>Diseñado &amp; desarrollado por <span class="text-gray-400 font-medium">Wendy Cano</span> · 2024</p>
+    </footer>
+
+  </main>
+
+  <!-- ── Scripts ── -->
+  <script>
+    // Estilos reutilizables para skill tags (Tailwind no puede generar clases dinámicas)
+    document.querySelectorAll('.skill-tag').forEach(el => {
+      el.classList.add(
+        'inline-flex', 'items-center', 'text-xs', 'font-medium',
+        'px-3', 'py-1', 'rounded-full', 'border',
+        'transition-all', 'duration-200',
+        'hover:scale-105', 'cursor-default', 'select-none'
+      );
+    });
+
+    // Toggle modo oscuro / claro
+    const html        = document.documentElement;
+    const toggleBtn   = document.getElementById('theme-toggle');
+    const iconSun     = document.getElementById('icon-sun');
+    const iconMoon    = document.getElementById('icon-moon');
+
+    function updateIcons() {
+      const isDark = html.classList.contains('dark');
+      iconSun.classList.toggle('hidden', isDark);
+      iconMoon.classList.toggle('hidden', !isDark);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      updateIcons();
+    });
+
+    // Restaurar preferencia guardada (dark por defecto si no hay nada guardado)
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+    }
+    updateIcons();
+
+    // Modo claro: ajustar colores de fondo y texto
+    const lightStyles = document.createElement('style');
+    lightStyles.textContent = `
+      html:not(.dark) body                     { background-color: #f9fafb; color: #111827; }
+      html:not(.dark) .bg-gray-950             { background-color: #f9fafb; }
+      html:not(.dark) .bg-gray-900             { background-color: #ffffff; }
+      html:not(.dark) .bg-gray-800             { background-color: #f3f4f6; }
+      html:not(.dark) .hover\\:bg-gray-800:hover{ background-color: #e5e7eb; }
+      html:not(.dark) .border-gray-800         { border-color: #e5e7eb; }
+      html:not(.dark) .border-gray-700         { border-color: #d1d5db; }
+      html:not(.dark) .text-gray-100           { color: #111827; }
+      html:not(.dark) .text-gray-400           { color: #4b5563; }
+      html:not(.dark) .text-gray-500           { color: #6b7280; }
+      html:not(.dark) .text-gray-300           { color: #374151; }
+      html:not(.dark) .text-gray-600           { color: #9ca3af; }
+    `;
+    document.head.appendChild(lightStyles);
+  </script>
+
+</body>
+</html>
